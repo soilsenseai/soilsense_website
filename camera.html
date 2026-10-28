@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#08100b">
+  <title>Capture Soil Photo | SoilSense</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    :root {
+      color-scheme: dark;
+      --ss-primary: #08100B;
+      --ss-secondary: #22C55E;
+      --ss-secondary-light: #4ade80;
+      --ss-secondary-dark: #16a34a;
+      --ss-panel: #0f1c14;
+      --ss-panel-border: #1a2e22;
+      --ss-text: #e2e8f0;
+      --ss-muted: #cbd5e1;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--ss-primary); scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--ss-primary); color: var(--ss-text);
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .bg-earth-950 { background-color: var(--ss-primary); }
+    .bg-earth-950\/90 { background-color: rgba(8,16,11,.92); }
+    .bg-earth-950\/70 { background-color: rgba(8,16,11,.72); }
+    .bg-earth-900\/70 { background-color: rgba(15,28,20,.88); }
+    .bg-leaf-500\/10 { background-color: rgba(34,197,94,.10); }
+    .bg-leaf-500\/5 { background-color: rgba(34,197,94,.055); }
+    .bg-leaf-500 { background-color: var(--ss-secondary); }
+    .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--ss-secondary-light), var(--ss-secondary-dark)); }
+    .from-leaf-400 { --tw-gradient-from: var(--ss-secondary-light); }
+    .to-leaf-600 { --tw-gradient-to: var(--ss-secondary-dark); }
+    .text-slate-200 { color: #e2e8f0; }
+    .text-slate-300 { color: #cbd5e1; }
+    .text-slate-400 { color: #94a3b8; }
+    .text-slate-500 { color: #64748b; }
+    .text-white { color: #fff; }
+    .text-earth-950 { color: var(--ss-primary); }
+    .text-leaf-400, .text-leaf-300 { color: var(--ss-secondary); }
+    .border { border: 1px solid var(--ss-panel-border); }
+    .border-b { border-bottom: 1px solid var(--ss-panel-border); }
+    .border-earth-800, .border-earth-800\/60 { border-color: rgba(34,62,43,.9); }
+    .border-leaf-500\/60 { border-color: rgba(34,197,94,.62); }
+    .border-leaf-500\/20 { border-color: rgba(34,197,94,.22); }
+    .sticky { position: sticky; }
+    .top-0 { top: 0; }
+    .z-50 { z-index: 50; }
+    .backdrop-blur-md { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    .max-w-5xl { max-width: 64rem; }
+    .max-w-3xl { max-width: 48rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .min-h-screen { min-height: 100vh; }
+    .h-16 { height: 4rem; }
+    .w-10 { width: 2.5rem; }
+    .h-10 { height: 2.5rem; }
+    .flex { display: flex; }
+    .inline-block { display: inline-block; }
+    .grid { display: grid; }
+    .hidden { display: none !important; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .justify-center { justify-content: center; }
+    .grid-cols-1 { grid-template-columns: minmax(0, 1fr); }
+    .gap-3 { gap: .75rem; }
+    .p-4 { padding: 1rem; }
+    .p-5 { padding: 1.25rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .px-7 { padding-left: 1.75rem; padding-right: 1.75rem; }
+    .py-2 { padding-top: .5rem; padding-bottom: .5rem; }
+    .py-3 { padding-top: .75rem; padding-bottom: .75rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .py-1\.5 { padding-top: .375rem; padding-bottom: .375rem; }
+    .mt-2 { margin-top: .5rem; }
+    .mt-3 { margin-top: .75rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-5 { margin-top: 1.25rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mr-2 { margin-right: .5rem; }
+    .rounded-xl { border-radius: .75rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-3xl { border-radius: 1.5rem; }
+    .rounded-full { border-radius: 9999px; }
+    .font-sans { font-family: "Plus Jakarta Sans", system-ui, sans-serif; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+    .font-extrabold { font-weight: 800; }
+    .font-black { font-weight: 900; }
+    .text-xs { font-size: .75rem; line-height: 1rem; }
+    .text-sm { font-size: .875rem; line-height: 1.45rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .tracking-tight { letter-spacing: -.025em; }
+    .tracking-widest { letter-spacing: .1em; }
+    .uppercase { text-transform: uppercase; }
+    .leading-tight { line-height: 1.2; }
+    .leading-relaxed { line-height: 1.75; }
+    .text-center { text-align: center; }
+    .no-underline { text-decoration: none; }
+    .antialiased { -webkit-font-smoothing: antialiased; }
+    .shadow-lg { box-shadow: 0 10px 25px rgba(34,197,94,.13); }
+    .shadow-2xl { box-shadow: 0 20px 55px rgba(0,0,0,.38), 0 0 24px rgba(34,197,94,.06); }
+    .shadow-md { box-shadow: 0 5px 16px rgba(34,197,94,.12); }
+    .shadow-leaf-500\/20 { box-shadow: 0 0 22px rgba(34,197,94,.20); }
+    .transition-all { transition: all .18s ease; }
+    .control-button {
+      min-height: 46px; touch-action: manipulation; border-radius: .75rem; font-weight: 700;
+      padding: .75rem 1rem; border: 1px solid transparent;
+      transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .control-button:hover { box-shadow: 0 0 22px rgba(34,197,94,.17); transform: translateY(-1px); }
+    .control-button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--ss-secondary); outline-offset: 3px;
+    }
+    .hover\:bg-leaf-400:hover { background-color: var(--ss-secondary-light); }
+    .hover\:bg-leaf-500\/10:hover { background-color: rgba(34,197,94,.12); }
+    .hover\:text-leaf-300:hover { color: var(--ss-secondary-light); }
+    header { border-bottom: 1px solid rgba(34,197,94,.14); }
+    main { width: 100%; }
+    main > section { border-color: rgba(34,197,94,.16); }
+    h1, h2, p { margin-top: 0; }
+    h1 { margin-bottom: 0; }
+    .status-message { overflow-wrap: anywhere; border-radius: .75rem; }
+    .file-input-hidden {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    video, #photo-preview {
+      display: block; width: 100%; max-width: 640px; max-height: 62vh; object-fit: contain;
+      margin: 0 auto; background: #030806; border-radius: 1rem; border: 1px solid rgba(34,197,94,.22);
+    }
+    #photo-preview { display: none; }
+    #capture-canvas { display: none; }
+    .fa-solid { display: inline-block; }
+    @media (min-width: 640px) {
+      .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .sm\:py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+      .sm\:p-8 { padding: 2rem; }
+      .sm\:p-5 { padding: 1.25rem; }
+      .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sm\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    }
+    @media (max-width: 420px) {
+      .text-3xl { font-size: 1.65rem; line-height: 2rem; }
+      nav .text-2xl { font-size: 1.25rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body class="bg-earth-950 text-slate-200 font-sans antialiased min-h-screen">
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-earth-950/90 border-b border-earth-800/60">
+    <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <a href="index.html" class="flex items-center gap-3 no-underline" aria-label="Back to SoilSense home">
+        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-leaf-400 to-leaf-600 flex items-center justify-center text-earth-950 font-black text-xl shadow-lg shadow-leaf-500/20"><i class="fa-solid fa-leaf"></i></span>
+        <span class="text-2xl font-bold tracking-tight text-white">Soil<span class="text-leaf-400">Sense</span></span>
+      </a>
+      <a href="index.html" class="text-sm font-semibold text-leaf-400 hover:text-leaf-300 py-2"><i class="fa-solid fa-arrow-left mr-2"></i>Back to site</a>
+    </nav>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <section class="bg-earth-900/70 border border-earth-800 rounded-3xl p-5 sm:p-8 shadow-2xl">
+      <div class="inline-block text-xs font-bold uppercase tracking-widest text-leaf-400 bg-leaf-500/10 px-4 py-1.5 rounded-full mb-4">Soil photo</div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">Capture your soil photo</h1>
+      <p class="text-slate-300 mt-3 leading-relaxed">Use your phone's rear camera or choose an existing image. For a useful photo, fill the frame with soil, use good lighting, and avoid including too much scenery.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <button id="start-camera" type="button" class="control-button rounded-xl px-4 py-3 bg-leaf-500 hover:bg-leaf-400 text-earth-950 font-bold shadow-md transition-all"><i class="fa-solid fa-video mr-2"></i>Start Live Camera</button>
+        <button id="choose-photo" type="button" class="control-button rounded-xl px-4 py-3 border border-leaf-500/60 text-leaf-300 hover:bg-leaf-500/10 font-bold transition-all"><i class="fa-solid fa-image mr-2"></i>Take Photo / Choose Image</button>
+      </div>
+      <input id="photo-input" class="file-input-hidden" type="file" accept="image/*" capture="environment" aria-label="Take or choose a soil photo">
+
+      <div id="camera-area" class="hidden mt-6">
+        <video id="camera-video" autoplay muted playsinline></video>
+        <div class="mt-4 flex justify-center">
+          <button id="capture-photo" type="button" class="control-button rounded-full px-7 py-3 bg-leaf-500 hover:bg-leaf-400 text-earth-950 font-extrabold shadow-lg"><i class="fa-solid fa-camera mr-2"></i>Take Photo</button>
+        </div>
+      </div>
+
+      <div id="preview-area" class="hidden mt-6">
+        <img id="photo-preview" alt="Preview of your selected soil photo">
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button id="retake-photo" type="button" class="control-button rounded-xl px-4 py-3 bg-leaf-500 hover:bg-leaf-400 text-earth-950 font-bold"><i class="fa-solid fa-rotate-right mr-2"></i>Retake / Choose Another</button>
+          <button id="download-photo" type="button" class="control-button rounded-xl px-4 py-3 border border-leaf-500/60 text-leaf-300 hover:bg-leaf-500/10 font-bold"><i class="fa-solid fa-download mr-2"></i>Save Photo to Device</button>
+        </div>
+        <p id="photo-details" class="text-sm text-slate-400 mt-3 text-center"></p>
+      </div>
+
+      <div id="status" role="status" aria-live="polite" class="status-message mt-5 rounded-xl border border-earth-800 bg-earth-950/70 px-4 py-3 text-sm text-slate-300">Choose “Start Live Camera” or “Take Photo / Choose Image” to begin.</div>
+
+      <div class="mt-6 rounded-2xl border border-leaf-500/20 bg-leaf-500/5 p-4 sm:p-5">
+        <h2 class="font-bold text-white"><i class="fa-solid fa-circle-info text-leaf-400 mr-2"></i>Before you begin</h2>
+        <p class="text-sm text-slate-300 mt-2 leading-relaxed">Live camera access usually requires this website to be opened over HTTPS. If you opened the HTML file directly from your phone's file manager and live camera does not work, use “Take Photo / Choose Image” or host the site over HTTPS. The photo stays on your device in this prototype; it is not uploaded to a server, and AI analysis is not connected yet.</p>
+      </div>
+      <canvas id="capture-canvas" class="hidden"></canvas>
+    </section>
+    <p class="text-center text-xs text-slate-500 mt-6">SoilSense prototype · Photo capture only · Not a laboratory soil test</p>
+  </main>
+
+  <script>
+    (() => {
+      const startBtn = document.getElementById('start-camera');
+      const chooseBtn = document.getElementById('choose-photo');
+      const input = document.getElementById('photo-input');
+      const cameraArea = document.getElementById('camera-area');
+      const video = document.getElementById('camera-video');
+      const captureBtn = document.getElementById('capture-photo');
+      const previewArea = document.getElementById('preview-area');
+      const preview = document.getElementById('photo-preview');
+      const retakeBtn = document.getElementById('retake-photo');
+      const downloadBtn = document.getElementById('download-photo');
+      const details = document.getElementById('photo-details');
+      const status = document.getElementById('status');
+      const canvas = document.getElementById('capture-canvas');
+      let stream = null;
+      let currentObjectUrl = null;
+      let selectedFile = null;
+
+      function setStatus(message, isError = false) {
+        status.textContent = message;
+        status.classList.toggle('text-red-300', isError);
+        status.classList.toggle('text-slate-300', !isError);
+      }
+
+      function stopCamera() {
+        if (stream) {
+          stream.getTracks().forEach(track => track.stop());
+          stream = null;
+        }
+        video.srcObject = null;
+        cameraArea.classList.add('hidden');
+      }
+
+      function showSelectedPhoto(file, sourceLabel) {
+        if (!file || !file.type || !file.type.startsWith('image/')) {
+          setStatus('Please choose a valid image file.', true);
+          return;
+        }
+        selectedFile = file;
+        if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+        currentObjectUrl = URL.createObjectURL(file);
+        preview.src = currentObjectUrl;
+        previewArea.classList.remove('hidden');
+        preview.style.display = 'block';
+        stopCamera();
+        const sizeKb = Math.max(1, Math.round(file.size / 1024));
+        details.textContent = `${file.name || 'soil-photo.jpg'} · ${sizeKb.toLocaleString()} KB · ${sourceLabel}`;
+        setStatus('Photo ready. Check the preview, then save it or choose another. Model analysis will be added after backend integration.');
+      }
+
+      async function startCamera() {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          setStatus('Live camera is not available in this browser context. Try “Take Photo / Choose Image”, or open the site over HTTPS.', true);
+          return;
+        }
+        stopCamera();
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } }
+          });
+          video.srcObject = stream;
+          cameraArea.classList.remove('hidden');
+          previewArea.classList.add('hidden');
+          await video.play();
+          setStatus('Camera is ready. Point it at the soil and tap “Take Photo”.');
+        } catch (error) {
+          console.error('Camera access failed:', error);
+          let message = 'Could not open the live camera. Check browser camera permission, then try “Take Photo / Choose Image”.';
+          if (!window.isSecureContext) message = 'Live camera requires HTTPS or localhost in this browser. Try “Take Photo / Choose Image”, or open this site using HTTPS.';
+          else if (error && error.name === 'NotAllowedError') message = 'Camera permission was denied. Allow camera access in your browser settings, or use “Take Photo / Choose Image”.';
+          else if (error && error.name === 'NotFoundError') message = 'No camera was found. Use “Take Photo / Choose Image” to select a picture.';
+          setStatus(message, true);
+          stopCamera();
+        }
+      }
+
+      function capturePhoto() {
+        if (!video.videoWidth || !video.videoHeight) {
+          setStatus('Camera is still starting. Please wait a moment and try again.', true);
+          return;
+        }
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(blob => {
+          if (!blob) {
+            setStatus('The photo could not be captured. Please try again.', true);
+            return;
+          }
+          const file = new File([blob], `soilsense-${Date.now()}.jpg`, { type: 'image/jpeg' });
+          showSelectedPhoto(file, 'captured with camera');
+        }, 'image/jpeg', 0.92);
+      }
+
+      startBtn.addEventListener('click', startCamera);
+      chooseBtn.addEventListener('click', () => input.click());
+      retakeBtn.addEventListener('click', () => {
+        previewArea.classList.add('hidden');
+        input.click();
+      });
+      input.addEventListener('change', event => {
+        const file = event.target.files && event.target.files[0];
+        if (file) showSelectedPhoto(file, 'selected from device');
+        input.value = '';
+      });
+      captureBtn.addEventListener('click', capturePhoto);
+      downloadBtn.addEventListener('click', () => {
+        if (!selectedFile) {
+          setStatus('Capture or choose a photo first.', true);
+          return;
+        }
+        const link = document.createElement('a');
+        link.href = currentObjectUrl;
+        link.download = selectedFile.name || 'soilsense-soil-photo.jpg';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setStatus('Your photo download has been requested. Check your phone’s Downloads or Photos app.');
+      });
+      window.addEventListener('pagehide', stopCamera);
+    })();
+  </script>
+</body>
+</html>

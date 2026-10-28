@@ -1,0 +1,370 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SoilSense - An AI soil fertility program</title>
+
+        <link rel="icon" type="image/png" href="favicon.png">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+            <link rel="stylesheet" href="soilsense.css">
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            earth: {
+                                800: '#1a2e22',
+                                900: '#0f1c14',
+                                950: '#08100b',
+                            },
+                            leaf: {
+                                400: '#4ade80',
+                                500: '#22c55e',
+                                600: '#16a34a',
+                            },
+                            soil: {
+                                300: '#d97706',
+                                400: '#b45309',
+                                800: '#2d1f18',
+                            }
+                        },
+                        fontFamily: {
+                            sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body class="bg-earth-950 text-slate-200 font-sans antialiased selection:bg-leaf-500 selection:text-earth-950">
+
+        <div class="main min-h-screen flex flex-col justify-between">
+            
+            <!-- YE NAVIGATON KA HEADER HAI -->
+            <header class="navbar sticky top-0 z-50 backdrop-blur-md bg-earth-950/80 border-b border-earth-800/60 transition-all duration-300">
+                <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                    
+                    <!-- YAHAN LOGO AAGAYA -->
+                    <div class="logo flex items-center gap-3">
+                        <div class="icon w-10 h-10 rounded-xl bg-gradient-to-br from-leaf-400 to-leaf-600 flex items-center justify-center text-earth-950 font-black text-xl shadow-lg shadow-leaf-500/20">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <span class="brand text-2xl font-bold tracking-tight text-white">Soil<span class="text-leaf-400">Sense</span></span>
+                    </div>
+
+                    <!-- YE NAVIGATION KE LINKS AAGAYE -->
+                    <ul class="menu hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                        <li><a href="#home" class="hover:text-leaf-400 transition-colors py-2 border-b-2 border-leaf-400 text-white font-semibold">Home</a></li>
+                        <li><a href="#about" class="hover:text-leaf-400 transition-colors py-2">About Us</a></li>
+                        <li><a href="#mission" class="hover:text-leaf-400 transition-colors py-2">Mission</a></li>
+                        <li><a href="#how-to-use" class="hover:text-leaf-400 transition-colors py-2">How It Works</a></li>
+                        <li><a href="#team" class="hover:text-leaf-400 transition-colors py-2">Team</a></li>
+                        <li><a href="#blog" class="hover:text-leaf-400 transition-colors py-2">Blog</a></li>
+                        <li><a href="#estore" class="hover:text-leaf-400 transition-colors py-2">E-Store</a></li>
+                        
+                    </ul>
+
+                    <!-- YE ACTION WALA BUTTON HAI -->
+                    <div class="actions flex items-center gap-4">
+                        <a href="camera.html" class="button px-5 py-2.5 rounded-full bg-leaf-500 hover:bg-leaf-400 text-earth-950 font-bold text-sm transition-all duration-200 shadow-lg shadow-leaf-500/25 flex items-center gap-2">
+                            <i class="fa-solid fa-camera"></i> Start Analysis
+                        </a>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- YE MERA MAIN CONTENT -->
+            <main class="content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+                
+                <!-- Container 1 -->
+                <section id="home" class="hero grid lg:grid-cols-12 gap-12 items-center pt-6">
+                
+                    <div class="lg:col-span-7 space-y-8">
+                        <div class="badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-earth-800/80 border border-leaf-500/30 text-leaf-400 text-xs font-semibold uppercase tracking-wider">
+                            <i class="fa-solid fa-microchip text-xs"></i> Next-Gen AI Agriculture
+                        </div>
+
+                        <div class="intro space-y-4">
+                            <h1 class="title text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                                What is <span class="text-transparent bg-clip-text bg-gradient-to-r from-leaf-400 to-emerald-200">Soil Sense?</span>
+                            </h1>
+                            <p class="text text-lg text-slate-300 leading-relaxed max-w-2xl">
+                                SoilSense is an AI-powered agricultural advisory platform designed to help farmers and gardeners analyze soil, assess soil fertility, discover suitable crops and plants, and understand weather-related risks.
+                            </p>
+                        </div>
+
+                        <div id="about" class="about space-y-3 bg-earth-900/60 border border-earth-800 p-6 sm:p-8 rounded-2xl backdrop-blur-sm glow">
+                            <h2 class="subtitle text-xl font-bold text-leaf-400 flex items-center gap-2">
+                                <i class="fa-solid fa-seedling"></i> About Our Project
+                            </h2>
+                            <p class="description text-slate-300 text-sm sm:text-base leading-relaxed">
+                                Our project, AI-Based Soil Fertility Detection, uses Artificial Intelligence (AI) to help determine the fertility of soil. Soil fertility is essential for healthy plant growth and better crop production. Our system analyzes important soil parameters, such as nitrogen, phosphorus, potassium, pH, moisture, and other available measurements, to estimate soil fertility. By using AI technology, we aim to provide quick, informative, and data-driven results that help users understand their soil and make better decisions for agriculture.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY WALA SIDE -->
+                    <div class="gallery lg:col-span-5">
+                        <div class="grid grid-cols-2 gap-4 relative">
+                            
+                            <div class="glow absolute -inset-4 bg-gradient-to-r from-leaf-500/10 to-soil-300/10 rounded-3xl blur-2xl -z-10"></div>
+
+                            <div class="space-y-4">
+                                <div class="card overflow-hidden rounded-2xl border border-earth-800 group shadow-lg">
+                                    <img src="https://images.unsplash.com/photo-1592417817098-8f3d6eb1626d?auto=format&fit=crop&w=600&q=80" alt="Plant sample 1" class="picture w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2e22/4ade80?text=Soil+Sample+1';">
+                                </div>
+                                <div class="card overflow-hidden rounded-2xl border border-earth-800 group shadow-lg">
+                                    <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80" alt="Plant sample 2" class="picture w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2e22/4ade80?text=Soil+Sample+2';">
+                                </div>
+                            </div>
+                            <div class="pt-8">
+                                <div class="card overflow-hidden rounded-2xl border border-earth-800 group shadow-lg">
+                                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80" alt="Plant sample 3" class="picture w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2e22/4ade80?text=Soil+Sample+3';">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Container 2 -->
+                <section id="mission" class="pillars space-y-8">
+                    <div class="text-center max-w-2xl mx-auto">
+                        <span class="tag text-leaf-400 font-semibold text-sm uppercase tracking-wider">Features & Insights</span>
+                        <h2 class="title text-3xl sm:text-4xl font-bold text-white mt-1">Core Pillars of SoilSense</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        
+                        <div class="box bg-earth-900/40 border border-earth-800/80 hover:border-leaf-500/50 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                            <div>
+                                <div class="icon w-12 h-12 rounded-xl bg-earth-800 text-leaf-400 flex items-center justify-center text-xl mb-6">
+                                    <i class="fa-solid fa-bullseye"></i>
+                                </div>
+                                <h3 class="title text-xl font-bold text-white mb-3">Our Mission</h3>
+                                <p class="text text-slate-300 text-sm leading-relaxed">
+                                    Our mission is to combine Artificial Intelligence with agricultural science to make soil fertility assessment easier, smarter, and more accessible. We aim to develop a user-friendly system that helps students, farmers, gardeners, and agricultural researchers understand soil conditions through data-driven analysis.
+                                </p>
+                            </div>
+                        </div>
+
+                        
+                        <div class="box bg-earth-900/40 border border-earth-800/80 hover:border-leaf-500/50 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                            <div>
+                                <div class="icon w-12 h-12 rounded-xl bg-earth-800 text-leaf-400 flex items-center justify-center text-xl mb-6">
+                                    <i class="fa-solid fa-gear"></i>
+                                </div>
+                                <h3 class="title text-xl font-bold text-white mb-3">How Will It Work?</h3>
+                                <p class="text text-slate-300 text-sm leading-relaxed">
+                                    Our AI-based system works by analyzing soil data entered by the user or collected through soil-testing sensors. The system processes parameters such as nitrogen, phosphorus, potassium, pH, and moisture. An AI model trained on soil data identifies patterns to estimate fertility levels instantly.
+                                </p>
+                            </div>
+                        </div>
+
+                        
+                        <div class="box bg-earth-900/40 border border-earth-800/80 hover:border-leaf-500/50 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                            <div>
+                                <div class="icon w-12 h-12 rounded-xl bg-earth-800 text-leaf-400 flex items-center justify-center text-xl mb-6">
+                                    <i class="fa-solid fa-flask"></i>
+                                </div>
+                                <h3 class="title text-xl font-bold text-white mb-3">Why Soil Fertility?</h3>
+                                <p class="text text-slate-300 text-sm leading-relaxed">
+                                    Soil fertility refers to the ability of soil to provide essential nutrients and suitable conditions for plant growth. Fertile soil contains key nutrients, organic matter, and moisture. Understanding fertility helps farmers select crops, manage fertilizers, and improve yields.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Container 3 -->
+                <section id="how-to-use" class="guide bg-gradient-to-b from-earth-900/80 to-earth-950 border border-earth-800 rounded-3xl p-6 sm:p-12 relative overflow-hidden shadow-2xl">
+                    
+                    <div class="glow absolute top-0 right-0 w-96 h-96 bg-leaf-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="wrapper max-w-3xl">
+                        <div class="badge inline-block text-xs font-bold uppercase tracking-widest text-leaf-400 bg-leaf-500/10 px-4 py-1.5 rounded-full mb-4">
+                            User Guide
+                        </div>
+                        <h2 class="title text-3xl sm:text-4xl font-extrabold text-white mb-4">HOW TO USE SOILSENSE?</h2>
+                        
+                        <p class="description text-slate-300 mb-10 text-base sm:text-lg">
+                            Getting started with SoilSense is quick and easy. Follow these simple steps to analyze your soil in real time using AI technology:
+                        </p>
+
+                        <div class="steps space-y-8">
+                        
+                            <div class="step bg-earth-800/40 border border-earth-800 p-6 rounded-2xl space-y-3">
+                                <div class="header text-lg font-bold text-white flex items-center gap-3">
+                                    <span class="number flex items-center justify-center w-8 h-8 rounded-lg bg-leaf-500 text-earth-950 font-black text-sm">1</span>
+                                    <i class="fa-solid fa-camera text-leaf-400"></i> Step 1: Position Your Camera
+                                </div>
+                                <ul class="list space-y-2 pl-11">
+                                    <li class="item text-slate-300 text-sm flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-leaf-500 text-xs mt-1"></i>
+                                        <span>Bring your device (phone, laptop, or webcam) close to the soil sample you wish to test.</span>
+                                    </li>
+                                    <li class="item text-slate-300 text-sm flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-leaf-500 text-xs mt-1"></i>
+                                        <span>Ensure <strong class="text-white">adequate</strong> natural lighting or turn on your flash/light so the soil texture, color, and moisture level are clearly visible.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        
+                            <div class="step bg-earth-800/40 border border-earth-800 p-6 rounded-2xl space-y-4">
+                                <div class="header text-lg font-bold text-white flex items-center gap-3">
+                                    <span class="number flex items-center justify-center w-8 h-8 rounded-lg bg-leaf-500 text-earth-950 font-black text-sm">2</span>
+                                    Step 2: Enable Camera Access
+                                </div>
+                                <ul class="list space-y-3 pl-11">
+                                    <li class="item text-slate-300 text-sm flex items-center gap-3 flex-wrap">
+                                        <span>Click the</span>
+                                        <!-- camera-btn -->
+                                        <a href="camera.html" id="step-camera-btn" class="button px-4 py-1.5 rounded-lg bg-leaf-500 hover:bg-leaf-400 text-earth-950 font-bold text-xs inline-flex items-center gap-2 shadow-md transition-all">
+                                            <i class="fa-solid fa-camera"></i> Start Camera
+                                        </a>
+                                        <span>button on the SoilSense portal.</span>
+                                    </li>
+                                    <li class="item text-slate-300 text-sm flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-leaf-500 text-xs mt-1"></i>
+                                        <span>When prompted by your browser, <strong class="text-white">click "Allow"</strong> to give SoilSense permission to access your camera feed.</span>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        
+                            <div class="step bg-earth-800/40 border border-earth-800 p-6 rounded-2xl space-y-3">
+                                <div class="header text-lg font-bold text-white flex items-center gap-3">
+                                    <span class="number flex items-center justify-center w-8 h-8 rounded-lg bg-leaf-500 text-earth-950 font-black text-sm">3</span>
+                                    Step 3: Capture Soil Image
+                                </div>
+                                <ul class="list space-y-2 pl-11">
+                                    <li class="item text-slate-300 text-sm flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-leaf-500 text-xs mt-1"></i>
+                                        <span>On the camera page, use <strong class="text-white">Take Photo</strong> to capture the soil, or choose a photo from your phone gallery. Check the preview before continuing.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                    
+                            <div class="step bg-earth-800/40 border border-earth-800 p-6 rounded-2xl space-y-3">
+                                <div class="header text-lg font-bold text-white flex items-center gap-3">
+                                    <span class="number flex items-center justify-center w-8 h-8 rounded-lg bg-leaf-500 text-earth-950 font-black text-sm">4</span>
+                                    Step 4: AI Analysis + Instant Results
+                                </div>
+                                <ul class="list space-y-2 pl-11">
+                                    <li class="item text-slate-300 text-sm flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-leaf-500 text-xs mt-1"></i>
+                                        <span>The current prototype captures and previews a soil image. AI predictions will be enabled after the trained model is connected to the website backend.</span>
+                                    </li>
+                                    <li class="item text-slate-300 text-sm flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-leaf-500 text-xs mt-1"></i>
+                                        <span>Until the backend is connected, do not treat the photo as a soil test or as a measurement of pH, nutrients, or fertility.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+                    <div class="blog_section" id="blog">
+
+                <div class="blog_section_header">BLOG</div>
+
+
+                    <div class="videos">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQZGPUvw1qA?si=523IBMcW-729EqR5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/UNqCBicHe6s?si=m-WTQ_C5PugukQNY&amp;controls=0&amp;start=44" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+
+
+
+            </div>
+
+
+
+            <div class="team">
+
+                <div id="team" class="team"></div>
+
+                <div class="team_text">
+                    MEET OUR TEAM
+                </div>
+
+                <p class="team_textp">The team who brought <strong>SOILSENSE</strong> to life!</p>
+
+                <div class="imageteam">
+                    <img class="izhan" src="person.png" alt="">
+                    <h1>IZHAN KASHIF</h1>
+                    <p>WEBSITE DEVELOPER</p>
+    <br>
+                    <img class="ganesh" src="person.png" alt="">
+                    <h1>GANESH MAHESHWARI</h1>
+                    <p>AI MODEL TRAINER</p>
+    <br>
+                    <img class="ahmed" src="person.png" alt="">
+                    <h1>AHMED NADEEM</h1>
+                    <p>DESIGN & NETWORKING</p>
+    <br>
+                    <img class="miss" src="TEAM1_fix.jpeg" alt="">
+                    <h1>JAVERIA SIDDIQUI</h1>
+                    <p>SUPERVISOR</p>
+    <br>
+                    <div class="special">SPECIAL CREDITS</div>
+                    <img class="jamil" src="person.png" alt="">
+                    <h1>JAMIL RIAZ</h1>
+                    <p></p>
+                </div>
+
+                </div>
+
+
+            </div>
+
+            <footer class="footer border-t border-earth-800 bg-earth-950 py-8 mt-12">
+                <div class="content max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm">
+                    <p>&copy; 2026 <strong>SoilSense</strong> AI Advisory. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+
+        <!-- CAMERA FUNCTION -->
+        <!-- <script>
+            const cameraBtn = document.getElementById('step-camera-btn');
+            const videoElement = document.getElementById('camera-feed');
+
+            if (cameraBtn) {
+                cameraBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    try {
+                        // Request camera stream (prefers rear-facing camera on mobile devices)
+                        const constraints = {
+                            video: { facingMode: 'environment' }
+                        };
+
+                        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                        
+                        // Show the video player and pass the camera stream into it
+                        videoElement.style.display = 'block';
+                        videoElement.srcObject = stream;
+                        
+                    } catch (error) {
+                        console.error('Error accessing the camera:', error);
+                        alert('Camera access was denied or is not supported by your browser.');
+                    }
+                });
+            }
+        </script> -->
+
+    </body>
+    </html>
